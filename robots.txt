@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://passionkm.github.io/market-flow-report/sitemap.xml
