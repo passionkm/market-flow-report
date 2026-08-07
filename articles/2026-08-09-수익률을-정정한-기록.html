@@ -1,0 +1,64 @@
+<!doctype html><html lang=ko><head><meta charset=utf-8>
+<meta name=viewport content='width=device-width,initial-scale=1'>
+<title>이 사이트는 52일 동안 틀린 수익률을 게시했습니다 — 부호까지 틀렸습니다</title>
+<meta name=description content="게시된 누적수익률 +3,197.98%의 실제 값은 -34.04%였습니다. 원인은 자본금 상수를 두 곳에 따로 적어둔 것 한 가지였습니다. 발견 경위, 정정 방법, 재발 방지까지 남깁니다.">
+<link rel=canonical href="https://passionkm.github.io/market-flow-report/articles/2026-08-09-수익률을-정정한-기록.html">
+<meta property="og:title" content="이 사이트는 52일 동안 틀린 수익률을 게시했습니다 — 부호까지 틀렸습니다">
+<meta property="og:description" content="게시된 누적수익률 +3,197.98%의 실제 값은 -34.04%였습니다. 원인은 자본금 상수를 두 곳에 따로 적어둔 것 한 가지였습니다. 발견 경위, 정정 방법, 재발 방지까지 남깁니다.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://passionkm.github.io/market-flow-report/articles/2026-08-09-수익률을-정정한-기록.html">
+<style>
+body{font-family:system-ui,-apple-system,'Apple SD Gothic Neo',sans-serif;max-width:760px;
+margin:0 auto;padding:16px;line-height:1.6;color:#222;background:#fafafa}
+h1{font-size:1.4rem}h2{font-size:1.1rem;border-bottom:2px solid #eee;padding-bottom:4px;margin-top:28px}
+h3{font-size:1rem;margin-top:20px}
+.note{background:#fff8e1;border:1px solid #ffe082;padding:8px 12px;border-radius:8px;font-size:.85rem}
+.muted{color:#777;font-size:.85rem}a{color:#1565c0;text-decoration:none}
+blockquote{border-left:3px solid #ddd;margin:12px 0;padding:4px 12px;color:#555}
+pre{background:#f3f3f3;padding:10px;border-radius:6px;overflow-x:auto;font-size:.85rem}
+code{background:#f0f0f0;padding:1px 4px;border-radius:4px;font-size:.9em}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+td,th{border-bottom:1px solid #eee;padding:4px 6px;text-align:left}
+footer{margin-top:32px;color:#999;font-size:.8rem}
+</style></head><body>
+<nav style='margin:8px 0 16px;font-size:.85rem'><a href='../index.html'>홈</a> · <a href='../about.html'>소개</a> · <a href='../disclaimer.html'>투자 면책</a> · <a href='../privacy.html'>개인정보처리방침</a> · <a href='../contact.html'>연락처</a></nav>
+<p><a href='../index.html'>← 목록</a></p>
+<h1>이 사이트는 52일 동안 틀린 수익률을 게시했습니다 — 부호까지 틀렸습니다</h1>
+<p class=muted>시리즈: 폐기 기록 · 2편 · 2026-08-09</p>
+<div class=note>본 페이지는 <b>개인 학습용 모의매매·시장기록</b>이며 <b>투자 권유나 종목 추천이 아닙니다.</b> 수치는 모의(가상) 결과입니다.</div>
+<p>2026년 6월 10일부터 7월 31일까지 이 사이트에 올라간 포스트 <b>37편</b>에 잘못된 누적수익률이 실려 있었습니다. 게시된 값은 +2,876%에서 +5,760% 사이였고, 7월 31일 자 포스트에는 <b>+3,197.98%</b>로 적혀 있었습니다.</p>
+<p>같은 날의 실제 값은 <b>-34.04%</b>였습니다.</p>
+<p>수치가 조금 어긋난 게 아니라 부호가 반대였습니다. 큰 손실을 큰 수익으로 게시했고, 52일 동안 그대로 공개돼 있었습니다.</p>
+<h2>원인은 한 줄이었습니다</h2>
+<p>이 시스템은 모의 계좌 자본금을 <code>trading_config.py</code>에 한 번 정의합니다. 5억원입니다. 각 엔진은 이 값을 가져다 씁니다.</p>
+<p>그런데 사이트를 발행하는 코드가 이 값을 <b>자기 파일 안에 따로 적어두고 있었습니다.</b> 그 값은 1천만원이었습니다.</p>
+<p>수익률 계산식은 이렇습니다.</p>
+<pre><code>누적수익률 = (현재 총자산 - 자본금) / 자본금 × 100</code></pre>
+<p>총자산이 약 3.3억일 때, 자본금을 5억으로 놓으면 -34%가 나옵니다. 같은 총자산에 자본금을 1천만원으로 놓으면 +3,200%가 나옵니다. 분모가 50배 틀리면 결과는 이렇게 바뀝니다.</p>
+<p>알림 시스템과 매매 기록 쪽은 처음부터 <code>trading_config</code>를 가져다 썼기 때문에 정상이었습니다. <b>틀린 건 발행 코드 한 곳뿐이었고, 그 한 곳이 공개되는 유일한 창구였습니다.</b></p>
+<h2>왜 52일이나 걸렸나</h2>
+<p>가장 불편한 부분입니다.</p>
+<p>+3,197%는 누가 봐도 이상한 숫자입니다. 그런데 이 값을 매일 만들어내는 것은 자동화된 cron이고, 사람이 눈으로 확인하는 절차가 그 경로에 없었습니다. 매매 로직 쪽에는 검증 게이트가 여러 겹 걸려 있는데, <b>"공개 사이트에 나가는 숫자"에는 아무 게이트가 없었습니다.</b></p>
+<p>이건 우선순위 판단의 결과입니다. 돈이 움직이는 경로를 지키느라 밖으로 나가는 경로를 안 봤습니다. 실제로는 후자가 남에게 보이는 유일한 면이었습니다.</p>
+<h2>어떻게 정정했나</h2>
+<p>세 가지를 했습니다.</p>
+<p><b>첫째, 원인 제거.</b> 발행 코드가 자본금을 자체 정의하던 부분을 없애고 <code>trading_config</code>에서 가져오도록 바꿨습니다. 상수를 두 곳에 적어두면 언젠가 갈라진다는 게 이번 건의 교훈입니다.</p>
+<p><b>둘째, 게시본 37편 정정.</b> 여기서 운이 좋았던 점이 하나 있습니다. 각 포스트에 수익률뿐 아니라 <b>총자산 금액도 같이 게시돼 있었습니다.</b> 그래서 정확한 값을 역산할 수 있었습니다. 추정한 게 아니라 계산한 것입니다. 총자산이 없었다면 과거 값은 복원 불가였을 겁니다.</p>
+<p>정정 방식은 지우는 대신 남기는 쪽을 택했습니다. 원래 수치에 취소선을 긋고, 정정된 값과 정정 날짜를 담은 안내 박스를 넣었습니다. 7월 31일 포스트는 지금 이렇게 보입니다.</p>
+<blockquote><s>+3,197.98%</s> → -34.04% (정정일 2026-08-01)</blockquote>
+<p><b>틀린 기록을 조용히 덮어쓰면 그 사이트가 무엇을 게시했었는지 아무도 확인할 수 없게 됩니다.</b> 그건 정정이 아니라 은폐에 가깝습니다.</p>
+<p><b>셋째, 발행 가드.</b> 발행 직전에 검사하는 스크립트를 만들었습니다. 절대값 300%를 넘는 수익률이 발견되면 발행을 중단시킵니다. 정상적인 모의 계좌에서 나올 수 없는 값이기 때문입니다. 이 가드를 정정 전 상태에 걸어보면 37편 전부에서 차단이 걸립니다.</p>
+<h2>일주일 뒤 현재</h2>
+<p>정정 이후 6편이 새로 발행됐고, 전부 수정된 계산식으로 나갔습니다. 8월 7일 자 포스트의 누적수익률은 <b>-24.30%</b>입니다. 8월 1일의 -34.04%에서 올라온 값인데, 이건 계산이 바뀌어서가 아니라 그동안 평가액이 움직인 결과입니다. 계산식은 그대로입니다.</p>
+<p>가드는 현재 통과 상태입니다. 게시본 45편 중 37편에 정정 표시가 남아 있습니다.</p>
+<h2>남길 만한 것</h2>
+<p><b>상수는 한 곳에만 적습니다.</b> 같은 값을 두 파일에 적으면 한쪽만 바뀌는 날이 옵니다. 이번엔 그 값이 50배 차이였습니다.</p>
+<p><b>밖으로 나가는 경로에도 게이트를 겁니다.</b> 내부 계산이 아무리 정확해도 발행 코드가 틀리면 사람들이 보는 건 틀린 값입니다. 공개 경로는 내부 경로만큼 검증받아야 합니다.</p>
+<p><b>말이 안 되는 숫자를 자동으로 걸러냅니다.</b> 사람이 매일 볼 수 없다면 기계가 봐야 합니다. "+3,000%가 나오면 멈춘다"는 규칙은 아주 단순한데, 있었다면 첫날 걸렸을 겁니다.</p>
+<p><b>정정은 남깁니다.</b> 틀렸던 기록을 지우면 다음에 또 틀렸을 때 아무도 알 수 없습니다.</p>
+<hr>
+<p><i>이 사이트의 모든 매매 기록은 실제 자금이 아닌 모의(가상) 계좌 기준입니다. 위 수익률은 가상 자금 5억원을 기준으로 계산한 값이며, 실제 투자 성과가 아닙니다. 투자 판단의 근거로 사용하기 위한 것이 아니며, 특정 종목의 매수·매도를 권유하지 않습니다.</i></p>
+<footer>Market Flow · 기획 기사 · 모의(가상) 기록</footer>
+<nav style='margin:8px 0 16px;font-size:.85rem'><a href='../index.html'>홈</a> · <a href='../about.html'>소개</a> · <a href='../disclaimer.html'>투자 면책</a> · <a href='../privacy.html'>개인정보처리방침</a> · <a href='../contact.html'>연락처</a></nav>
+</body></html>
