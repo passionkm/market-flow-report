@@ -1,0 +1,9 @@
+{
+  "appliedAt": "2026-08-14T19:06:22+09:00",
+  "stacks": [
+    "git"
+  ],
+  "mcpServers": [],
+  "tool": "cc-env/project-bootstrap",
+  "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+}
